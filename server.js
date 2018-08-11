@@ -19,17 +19,17 @@ config = JSON.parse(config);
 require('dotenv').config();
 let host = process.env.HOST;
 
-mongoCrud.createProfile();
-mongoCrud.findProfile("String").then(function(profile1){
-  console.log(profile1);
-  if(profile1 !== undefined){
-    if(Array.isArray(profile1))
-      profile1 = profile1[0];
-    profile1.name = "1234";
-    mongoCrud.updateProfile(profile1.id, profile1)
-    .then(x => mongoCrud.deleteProfile(x.id));  
-  }
-});
+// mongoCrud.createProfile();
+// mongoCrud.findAllProfile("String").then(function(profile1){
+//   console.log(profile1);
+//   if(profile1 !== undefined){
+//     if(Array.isArray(profile1))
+//       profile1 = profile1[0];
+//     profile1.name = "1234";
+//     mongoCrud.updateProfile(profile1.id, profile1)
+//     .then(x => mongoCrud.deleteProfile(x.id));  
+//   }
+// });
 
 if(process.env.NODE_ENV === "development")
   host = config.LOCALHOST;
@@ -71,6 +71,48 @@ app.get('/callback', (req, res) => res.render('callback', { callback: req.body})
 app.get('/socket', function(req, res,next) {
     res.sendfile(__dirname + '/public/html/socketExample.html');
 });
+
+app.post('/AOC/Profile', function(req, res, next) {
+  mongoCrud.createProfile(req.body).then(x => res.send(x))
+});
+
+// app.get('/AOC/findProfileId', function(req, res, next) {
+//   mongoCrud.findProfile(req.params.id).then(x => res.send(x));
+// });
+
+// app.get('/AOC/findProfileName', function(req, res, next) {
+//   mongoCrud.findProfile(req.params.name).then(x => res.send(x));
+// });
+
+// app.get('/AOC/findAllProfile', function(req, res,next) {
+//   mongoCrud.findAllProfile().then(x => res.send(x));
+// });
+// app.put('/AOC/Profile', function(req, res,next) {
+//   mongoCrud.updateProfile()
+// });
+// app.delete('/AOC/Profile', function(req, res,next) {
+//   res.sendfile(__dirname + '/public/html/socketExample.html');
+// });
+
+
+app.get('/AOC/findProfileId/:id', function(req, res, next) {
+  mongoCrud.findProfileId(req.params.id).then(x => res.send(x));
+});
+
+app.get('/AOC/findProfileName/:name', function(req, res, next) {
+  mongoCrud.findProfileName(req.params.name).then(x => res.send(x));
+});
+
+app.get('/AOC/findAllProfile', function(req, res,next) {
+  mongoCrud.findAllProfile().then(x => res.send(x));
+});
+app.get('/AOC/updateProfile', function(req, res,next) {
+  mongoCrud.updateProfile(req.body).then(x => res.send(x));
+});
+app.get('/AOC/deleteProfile', function(req, res,next) {
+  mongoCrud.deleteProfile(req.params.id).then(x => res.send(x));
+});
+
 ////////////////////Routes//////////////////////
 
 // Send current time to all connected clients
