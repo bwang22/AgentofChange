@@ -1,6 +1,7 @@
 node_modules/
 .elasticbeanstalk/
 .DS_Store
+public/assets/js/bundle.js*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
