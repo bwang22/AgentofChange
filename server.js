@@ -9,13 +9,25 @@ compression = require('compression'),
 requireHTTPS = require('./modules/https'),
 callbackModule = require('./modules/callback'),
 app = express(),
+Promise = require('bluebird'),
 server = http.createServer(app),
+mongoCrud = require('./modules/mongooseCrud'),
 io = require('socket.io')(server);
 
 let config = fs.readFileSync('./app_config.json', 'utf8');
 config = JSON.parse(config);
 require('dotenv').config();
 let host = process.env.HOST;
+
+mongoCrud.createProfile();
+mongoCrud.findProfile("String").then(function(profile1){
+  console.log(profile1);
+  if(profile1 !== undefined){
+    profile1.name = "1234";
+    mongoCrud.updateProfile(profile1.id, profile1)
+    .then(x => mongoCrud.deleteProfile(x.id));  
+  }
+});
 
 if(process.env.NODE_ENV === "development")
   host = config.LOCALHOST;
