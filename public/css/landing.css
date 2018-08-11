@@ -1,0 +1,14 @@
+#particles-js{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: fixed;
+}
+.container>.jumbotron>p>a{
+  position: relative;
+  z-index: 9999;
+}

@@ -1,0 +1,185 @@
+doctype html
+html
+  head
+    title Galactic
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //if lte IE 8
+      script(src='assets/js/ie/html5shiv.js')
+    link(rel='stylesheet', href='assets/css/main.css')
+    //if lte IE 8
+      link(rel='stylesheet', href='assets/css/ie8.css')
+      link(href="../css/landing.css", rel="stylesheet")
+      // Global Site Tag (gtag.js) - Google Analytics
+      script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-106126008-1')
+      script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
+        gtag('config', 'UA-106126008-1');
+  body
+    // Header
+    section#header
+      header
+        h1 Galactic
+        p Decentralized Smart Payments
+      footer
+        a.button.style2.scrolly-middle(href='#banner') What is Galactic
+
+    // Banner
+    section#banner
+      header
+        h2 Galactic Network
+      p
+        | A new economy created by the people for the people.
+        br
+        | 				We will decentralize everything.
+        br
+        | 				We are going to use smart contracts to create a meritocratic utopia. Starting with payments
+      footer
+        a.button.style2.scrolly(href='#benefits') Features
+
+    section#benefits.ni-section.ni-section-dark.section-home-benefits
+      .container
+        .row(class='150%')
+          .6u(class='12u$(medium)')
+            header.major
+              i.fa.fa-server
+              .text
+                .key Byzantine Fault-Tolerant
+                .value
+                  | Galactic Network tolerates up to one third of the network failing arbitrarily. This includes explicitly malicious behavior.
+          div(class='6u$ 12u$(medium) important(medium)')
+            header.major
+              i.fa.fa-clone
+              .text
+                .key Transaction Replication
+                .value
+                  | Galactic will replicate your transactions on all nodes running in the Galactic Network.
+
+          .6u(class='12u$(medium)')
+            header.major
+              i.fa.fa-lock
+              .text
+                .key Secure P2P
+                .value
+                  | Gossip protocols and peer discovery are secured via Galactic's cryptographic security system.
+          div(class='6u$ 12u$(medium) important(medium)')
+            header.major
+              i.fa.fa-bolt
+              .text
+                .key Lightning Fast
+                .value Galactic supports thousands of transaction per second at sub 500ms latencies.
+
+           .6u(class='12u$(medium)')
+             header.major
+               i.fa.fa-cloud-upload
+               .text
+                 .key Easy to Deploy
+                 .value
+                   | Packaged to use Heroku or AWS EBS to deploy your app.
+           div(class='6u$ 12u$(medium) important(medium)')
+             header.major
+               i.fa.fa-code
+               .text
+                 .key 100% Open Source
+                 .value
+                   | All of Galactic's source code will be available soon
+                   // Check it out on
+                   //a(href='https://github.com/tendermint') GitHub
+                   | .
+
+        footer
+          a.button.style2.scrolly-middle(href='#first') Roadmap
+
+    // Feature 1
+    article#first.container.box.style1.right
+      a.image.fit(href='img/decentralized.jpg')
+        img(src='img/decentralized.jpg', alt='')
+      .inner
+        header
+          h2
+            | The Vision
+        p
+          | Galactic Network wants to make building, deploying, and running distributed ledgers easy. It will provide an extremely modular and flexible platform for implementing transaction-based updates to shared state between untrusted parties coordinated by hashgraph consensus algorithms.
+    // Feature 2
+    article.container.box.style1.left
+      a.image.fit(href='img/hashgraphtree.jpeg')
+        img(src='img/hashgraphtree.jpeg', alt='')
+      .inner
+        header
+          h2
+            | Galactic Network and Security
+        p
+          | Galactic Network is build based on&nbsp;
+          a(href='http://www.swirlds.com/wp-content/uploads/2016/07/SWIRLDS-TR-2016-01.pdf') Hashgraph
+          | . It uses a consensus algorithm that is Byzantine Fault Tolerant.
+    // Portfolio
+    article.container.box.style2
+      header
+        h2 Decentralized Apps
+        p
+          | Using smart contracts to create
+          br
+          | DAOs and Markets on top of Galactic Network. Examples to come in early 2018
+      //.inner.gallery
+        .row(class='0%')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/01.jpg')
+              img(src='images/thumbs/01.jpg', alt='', title='Ad infinitum')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/02.jpg')
+              img(src='images/thumbs/02.jpg', alt='', title='Dressed in Clarity')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/03.jpg')
+              img(src='images/thumbs/03.jpg', alt='', title='Raven')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/04.jpg')
+              img(src='images/thumbs/04.jpg', alt='', title="I'll have a cup of Disneyland, please")
+        .row(class='0%')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/05.jpg')
+              img(src='images/thumbs/05.jpg', alt='', title='Cherish')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/06.jpg')
+              img(src='images/thumbs/06.jpg', alt='', title='Different.')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/07.jpg')
+              img(src='images/thumbs/07.jpg', alt='', title='History was made here')
+          .3u(class='12u(mobile)')
+            a.image.fit(href='images/fulls/08.jpg')
+              img(src='images/thumbs/08.jpg', alt='', title='People come and go and walk away')
+    // Contact
+
+    section#footer
+      ul.icons
+        //li
+          a.icon.fa-twitter(href='#')
+            span.label Twitter
+        li
+          a.icon.fa-facebook(href='https://www.facebook.com/groups/GalacticGold/')
+            span.label Facebook
+        //li
+          a.icon.fa-google-plus(href='#')
+            span.label Google+
+        //li
+          a.icon.fa-pinterest(href='#')
+            span.label Pinterest
+        li
+          a.icon.fa-wordpress(href='https://galactichashgraph.wordpress.com/')
+            span.label Blog
+        li
+          a.icon.fa-slack(href='https://galacticgoldslack.herokuapp.com/')
+            span.label Slack
+      .copyright
+        ul.menu
+          li © Galactic. All rights reserved.
+    // Scripts
+    script(src='assets/js/jquery.min.js')
+    script(src='assets/js/jquery.scrolly.min.js')
+    script(src='assets/js/jquery.poptrox.min.js')
+    script(src='assets/js/skel.min.js')
+    script(src='assets/js/util.js')
+    //if lte IE 8
+      script(src='assets/js/ie/respond.min.js')
+    script(src='assets/js/main.js')
