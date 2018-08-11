@@ -23,6 +23,8 @@ mongoCrud.createProfile();
 mongoCrud.findProfile("String").then(function(profile1){
   console.log(profile1);
   if(profile1 !== undefined){
+    if(Array.isArray(profile1))
+      profile1 = profile1[0];
     profile1.name = "1234";
     mongoCrud.updateProfile(profile1.id, profile1)
     .then(x => mongoCrud.deleteProfile(x.id));  
