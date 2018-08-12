@@ -1,36 +1,42 @@
 import React from "react";
 
 export const needs = [
-  {name: 'Canned Food', need: true},
-  {name: 'Water(Drinking and Sanitation)', need: true},
-  {name: 'Blankets', need: true},
-  {name: 'Batteries', need: true},
-  {name: 'Candles', need: true},
-  {name: 'Matches', need: true},
-  {name: 'First Aid Kit', need: true},
+  {name: 'Canned Food', need: true, unit: "cans", amount: 42},
+  {name: 'Water(Drinking and Sanitation)', need: true,  unit: "gallons", amount: 14},
+  {name: 'Blankets', need: true, unit: "", amount: 1},
+  {name: 'Batteries', need: true, unit: "", amount: 14},
+  {name: 'Candles', need: true,  unit: "", amount: 28},
+  {name: 'Matches', need: true, unit: "box(es)", amount: 1},
+  {name: 'First Aid Kit', need: true, unit: "", amount: 1},
 ];
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      needs
+      needs,
+      householdNumber: 0
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChangeNeed = this.handleChangeNeed.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.history.replace({pathname: "/findProfileId/1", state: {needs}});
+    this.props.history.replace({pathname: "/findProfileId/1", state: {needs, householdNumber: this.state.householdNumber}});
   }
 
   handleChangeNeed(e) {
-    debugger
     const target = parseInt(e.target.id.split("exampleCheck")[1],10);
     const newArray = [...this.state.needs];
     newArray[target].need = !newArray[target].need;
     this.setState({needs: newArray});
+  }
+
+  handleInput(e) {
+    const newNum = isNaN(parseInt(e.target.value,10)) ? 0 : parseInt(e.target.value,10);
+    this.setState({householdNumber: newNum});
   }
 
   boxes() {
@@ -53,6 +59,10 @@ class Signup extends React.Component {
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
             <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="householdNumber">Number of household members other than yourself:</label>
+            <input type="text" className="form-control col-sm-2" id="householdNumber" aria-describedby="emailHelp" onChange={this.handleInput} value={this.state.householdNumber} />
           </div>
           <h5 className="card-title">Supplies I have</h5>
           { this.boxes() }
@@ -98,7 +108,14 @@ class Signup extends React.Component {
 export const CheckBox = props => (
   <div className="custom-control custom-checkbox custom-control-inline">
     <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} onChange={props.handleChangeNeed} />
-    <label className="custom-control-label" htmlFor={`exampleCheck${props.id}`}>{props.name}</label>
+    <label className="custom-control-label" htmlFor={`exampleCheck${props.id}`}>
+      {props.name}
+      {
+        props.profilePage ?
+          ": " + (props.amount * (props.householdNumber + 1)) + " " + props.unit
+        : null
+      }
+    </label>
   </div>
 );
 
