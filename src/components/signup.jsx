@@ -13,18 +13,30 @@ export const needs = [
 class Signup extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      needs
+    }
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChangeNeed = this.handleChangeNeed.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.history.replace("/findProfileId/1");
+    this.props.history.replace({pathname: "/findProfileId/1", state: {needs}});
+  }
+
+  handleChangeNeed(e) {
+    debugger
+    const target = parseInt(e.target.id.split("exampleCheck")[1],10);
+    const newArray = [...this.state.needs];
+    newArray[target].need = !newArray[target].need;
+    this.setState({needs: newArray});
   }
 
   boxes() {
     const result = [];
-    for(let i = 0; i < needs.length; i++){
-      result.push(<CheckBox key={i} id={i} name={needs[i].name}/>);
+    for(let i = 0; i < this.state.needs.length; i++){
+      result.push(<CheckBox key={i} id={i} name={needs[i].name} handleChangeNeed={this.handleChangeNeed}/>);
     }
     return result;
   }
@@ -83,9 +95,9 @@ class Signup extends React.Component {
   }
 }
 
-const CheckBox = props => (
+export const CheckBox = props => (
   <div className="custom-control custom-checkbox custom-control-inline">
-    <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} />
+    <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} onChange={props.handleChangeNeed} />
     <label className="custom-control-label" htmlFor={`exampleCheck${props.id}`}>{props.name}</label>
   </div>
 );
