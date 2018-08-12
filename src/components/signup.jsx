@@ -7,7 +7,7 @@ export const needs = [
   {name: 'Batteries', need: true, unit: "", amount: 14},
   {name: 'Candles', need: true,  unit: "", amount: 28},
   {name: 'Matches', need: true, unit: "box(es)", amount: 1},
-  {name: 'First Aid Kit', need: true, unit: "", amount: 1},
+  {name: 'First Aid Kit', need: true, unit: "", amount: 1}
 ];
 
 class Signup extends React.Component {
@@ -107,17 +107,19 @@ class Signup extends React.Component {
 
 export const CheckBox = props => (
   <div className="custom-control custom-checkbox custom-control-inline">
-    <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} onChange={props.handleChangeNeed} />
-    <label className="custom-control-label" htmlFor={`exampleCheck${props.id}`}>
+    <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} onChange={props.handleChangeNeed} disabled={props.disabled}/>
+    <label className="custom-control-label" style={highlight(props.need, props.disabled, props.otherInfo)} htmlFor={`exampleCheck${props.id}`}>
       {props.name}
       {
-        props.profilePage ?
+        props.profilePage && !props.disabled ?
           ": " + (props.amount * (props.householdNumber + 1)) + " " + props.unit
         : null
       }
     </label>
   </div>
 );
+
+const highlight = (need, disabled, profPage) => profPage ? (need && disabled  ? { color: "#E40024" } : {color: "#239F1D"}) : {}
 
 const BooleanRadio = props => (
   <div className="row">

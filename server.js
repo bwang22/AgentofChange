@@ -113,7 +113,7 @@ app.get('/AOC/deleteProfile', function(req, res,next) {
   mongoCrud.deleteProfile(req.params.id).then(x => res.send(x));
 });
 
-app.get('/', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign Up Today!'}));
+app.get('*', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign Up Today!'}));
 
 ////////////////////Routes//////////////////////
 
