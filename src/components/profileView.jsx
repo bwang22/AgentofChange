@@ -1,4 +1,5 @@
 import React from "react";
+import {CheckBox} from "./signup";
 
 
 
@@ -6,14 +7,18 @@ class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      needs: []
+      needs: this.props.location.state.needs || []
     }
   }
 
-  componentDidMount() {
-    // for now, mock data
-
+  boxes() {
+    const result = [];
+    for(let i = 0; i < this.state.needs.length; i++){
+      if(this.state.needs[i].need) result.push(<CheckBox key={i} id={i} name={this.state.needs[i].name}/>);
+    }
+    return result;
   }
+
   render() {
     return(
       <div className="row">
@@ -32,9 +37,11 @@ class ProfileView extends React.Component {
             <div className="card-body">
               <h2 style={{ textAlign: "center"}}>Preparedness Level: Prepared</h2>
               <br />
-              <p style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center" }}>
                 Supplies Required:
-              </p>
+                <br />
+                {this.boxes()}
+              </div>
             </div>
           </div>
         </div>
