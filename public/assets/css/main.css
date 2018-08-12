@@ -48,6 +48,12 @@
 		-webkit-text-size-adjust: none;
 	}
 
+	@font-face {
+	    font-family: Alcubierre;
+	    src: url("../fonts/Alcubierre.otf") format("opentype");
+	}
+
+
 /* Box Model */
 
 	*, *:before, *:after {
@@ -1316,7 +1322,7 @@
 		background-size: auto, cover;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Alcubierre', 'Source Sans Pro', sans-serif;
 		font-size: 18pt;
 		line-height: 1.75em;
 		font-weight: 300;
