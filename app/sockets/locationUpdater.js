@@ -7,7 +7,7 @@ function setup(socket) {
         ws.on("message", async function(msg) {
             var data = JSON.parse(msg);
             try {
-                await profileService.updateLoc(data.username, data.loc);
+                await profileService.updateLoc(data.id, data.loc);
 
                 // send notification to other clients that this user's location changed
                 socket.clients.forEach(client => {

@@ -3,10 +3,10 @@ var router = express.Router();
 var profileService = require('../mongoose/services/profileService.js');
 const logger = require("../logger.js");
 
-router.delete("/AOC/deleteProfile/:username", async function(req, res) {
-    var username = req.params.username, response = {}, code; 
+router.delete("/AOC/deleteProfile/:id", async function(req, res) {
+    var id = req.params.id, response = {}, code; 
     try {
-        var count = (await profileService.deleteProfile(username)).deletedCount;
+        var count = (await profileService.deleteProfile(id)).deletedCount;
         if (count === 0)
             throw "Unable to delete profile.";
 
@@ -14,7 +14,7 @@ router.delete("/AOC/deleteProfile/:username", async function(req, res) {
         response.message = "Profile successfully deleted from database.";
         code = 200;        
     } catch (err) {
-        logger.error(err, { note: "Error occurred while deleting profile", data: username });
+        logger.error(err, { note: "Error occurred while deleting profile", data: id });
         response.status = "error";
         response.message = err;
         code = 400;
