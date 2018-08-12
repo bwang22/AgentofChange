@@ -27,7 +27,7 @@ let host = process.env.HOST;
 //       profile1 = profile1[0];
 //     profile1.name = "1234";
 //     mongoCrud.updateProfile(profile1.id, profile1)
-//     .then(x => mongoCrud.deleteProfile(x.id));  
+//     .then(x => mongoCrud.deleteProfile(x.id));
 //   }
 // });
 
@@ -63,7 +63,7 @@ app.use(app.router);
 app.locals.theme = process.env.THEME; //Make the THEME environment variable available to the app.
 
 ////////////////////Routes//////////////////////
-app.get('/', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign Up Today!'}));
+
 app.get('/landing', (req, res) => res.render('landing', { appTitle: 'A New Startup: Sign Up Today!'}));
 app.get('/galacticmass', (req, res) => res.render('galacticmass', { appTitle: 'A New Startup: Sign Up Today!'}));
 app.get('/referral', (req, res) => res.render('referral', { appTitle: 'A New Startup: Sign Up Today!'}));
@@ -112,6 +112,8 @@ app.get('/AOC/updateProfile', function(req, res,next) {
 app.get('/AOC/deleteProfile', function(req, res,next) {
   mongoCrud.deleteProfile(req.params.id).then(x => res.send(x));
 });
+
+app.get('/', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign Up Today!'}));
 
 ////////////////////Routes//////////////////////
 

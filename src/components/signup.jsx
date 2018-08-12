@@ -1,5 +1,15 @@
 import React from "react";
 
+export const needs = [
+  {name: 'Canned Food', need: true},
+  {name: 'Water(Drinking and Sanitation)', need: true},
+  {name: 'Blankets', need: true},
+  {name: 'Batteries', need: true},
+  {name: 'Candles', need: true},
+  {name: 'Matches', need: true},
+  {name: 'First Aid Kit', need: true},
+];
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -8,12 +18,13 @@ class Signup extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    this.props.history.replace("/findProfileId/1");
   }
 
   boxes() {
     const result = [];
-    for(let i = 0; i < 20; i++){
-      result.push(<CheckBox key={i} id={i}/>);
+    for(let i = 0; i < needs.length; i++){
+      result.push(<CheckBox key={i} id={i} name={needs[i].name}/>);
     }
     return result;
   }
@@ -22,7 +33,7 @@ class Signup extends React.Component {
     return(
       <div>
       <br />
-        <form>
+        <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
@@ -73,22 +84,22 @@ class Signup extends React.Component {
 }
 
 const CheckBox = props => (
-  <div className="form-group form-check form-check-inline">
-    <input type="checkbox" className="form-check-input" id={`exampleCheck${props.id}`} />
-    <label className="form-check-label" htmlFor={`exampleCheck${props.id}`}>Check me out</label>
+  <div className="custom-control custom-checkbox custom-control-inline">
+    <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} />
+    <label className="custom-control-label" htmlFor={`exampleCheck${props.id}`}>{props.name}</label>
   </div>
 );
 
 const BooleanRadio = props => (
   <div className="row">
     <legend className="col-form-label col-sm-5 pt-0">{props.legend}</legend>
-    <div className="form-check form-check-inline">
-      <input className="form-check-input" type="radio" name={props.name} id={`${props.name}1`} value={props.value1} />
-      <label className="form-check-label" htmlFor="inlineRadio1">{props.text1}</label>
+    <div className="custom-control custom-radio custom-control-inline">
+      <input className="custom-control-input" type="radio" name={props.name} id={`${props.name}1`} value={props.value1} />
+      <label className="custom-control-label" htmlFor={`${props.name}1`}>{props.text1}</label>
     </div>
-    <div className="form-check form-check-inline">
-      <input className="form-check-input" type="radio" name="inlineRadioOptions" id={`${props.name}2`} value={props.value2} />
-      <label className="form-check-label" htmlFor="inlineRadio2">{props.text2}</label>
+    <div className="custom-control custom-radio custom-control-inline">
+      <input className="custom-control-input" type="radio" name={props.name} id={`${props.name}2`} value={props.value2} />
+      <label className="custom-control-label" htmlFor={`${props.name}2`}>{props.text2}</label>
     </div>
   </div>
 
