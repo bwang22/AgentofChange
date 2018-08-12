@@ -10,6 +10,7 @@ requireHTTPS = require('./modules/https'),
 callbackModule = require('./modules/callback'),
 app = express(),
 Promise = require('bluebird'),
+webpush = require('web-push'),
 server = http.createServer(app),
 mongoCrud = require('./modules/mongooseCrud'),
 io = require('socket.io')(server);
@@ -30,6 +31,10 @@ let host = process.env.HOST;
 //     .then(x => mongoCrud.deleteProfile(x.id));
 //   }
 // });
+
+const publicVapidKey = "BM50tYqhM3P6W-lxpCDTvXSrxeY5rTkplPkUjxdqLulJvADRTXrkB8Td8qSqKdjO462EF8mDNMvW87NykfAU8U8";
+const privateVapidKey = "IwEh6OU0zVXXPKzjbB_IyeYDAj8cHjv3yCi5hLpkCxc";
+webpush.setVapidDetails('mailto:ttwanksta@gmail.com', publicVapidKey, privateVapidKey);
 
 if(process.env.NODE_ENV === "development")
   host = config.LOCALHOST;
@@ -115,6 +120,17 @@ app.get('/AOC/deleteProfile', function(req, res,next) {
 
 app.get('/', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign Up Today!'}));
 
+app.post('/subscribe', (req, res) => {
+  const subscription = req.body;
+  res.status(201).json({});
+  const payload = JSON.stringify({ title: 'This is a natural disaster warning' });
+
+  console.log(subscription);
+
+  webpush.sendNotification(subscription, payload).catch(error => {
+    console.error(error.stack);
+  });
+});
 ////////////////////Routes//////////////////////
 
 // Send current time to all connected clients
