@@ -109,7 +109,7 @@ export const CheckBox = props => (
   <div className="custom-control custom-checkbox custom-control-inline">
     <input type="checkbox" className="custom-control-input" id={`exampleCheck${props.id}`} onChange={props.handleChangeNeed} disabled={props.disabled}/>
     <label className="custom-control-label" style={highlight(props.need, props.disabled, props.otherInfo)} htmlFor={`exampleCheck${props.id}`}>
-      {props.name}
+      {props.disabled ? props.name : <a href={"https://www.bing.com/shop?q=" + props.name.split(" ").join("+")} target="_blank">{props.name}</a>}
       {
         props.profilePage && !props.disabled ?
           ": " + (props.amount * (props.householdNumber + 1)) + " " + props.unit

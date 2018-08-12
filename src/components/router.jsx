@@ -10,6 +10,7 @@ const Routes = props => (
     <div className="container-fluid">
       <Header />
       <Route path="/findProfileId/:id" component={ProfileView} />
+      <Route path="/emergency" component={ProfileView} />
       <Route exact path="/" component={Signup} />
     </div>
   </Router>

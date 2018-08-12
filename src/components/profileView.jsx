@@ -9,7 +9,8 @@ const level = {
 
 const defaultPerson = {
   name: "Mr Clippy",
-  img: "http://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/504767-Microsoft_0.jpg"
+  img: "http://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/504767-Microsoft_0.jpg",
+  number: "(929) 954-4533"
 
 };
 
@@ -28,12 +29,14 @@ const otherNeeds = [
 const persons = [
   {
     name: "Young Bill Gates",
-    img: "https://cdn.thegentlemansjournal.com/wp-content/uploads/2015/10/front18-900x600-c-center.jpg"
+    img: "https://cdn.thegentlemansjournal.com/wp-content/uploads/2015/10/front18-900x600-c-center.jpg",
+    number: "(919) 945-7893"
 
   },
   {
     name: "Steve Ballmer",
-    img: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2010/11/ballmer5.png"
+    img: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2010/11/ballmer5.png",
+    number: "(929) 965-1433"
 
   }
 ];
@@ -124,7 +127,7 @@ const ProfileItems = props => (
           <img src={props.person.img} style={{ borderRadius: "50%", width: "100px", height: "100px", border: "1px solid #cccccc", objectFit: "cover" }} />
           </div>
           <div className="col" style={{marginLeft: "10px"}}>
-            <div>{props.person.name}</div>
+            <div>{props.person.name} {props.person.number}</div>
             <div>{props.userBoxes("otherNeeds")}</div>
           </div>
         </div>
