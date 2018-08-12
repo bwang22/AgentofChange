@@ -123,7 +123,7 @@ app.get('*', (req, res) => res.render('index', { appTitle: 'A New Startup: Sign 
 app.post('/subscribe', (req, res) => {
   const subscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/czVbj0PcYK4:APA91bHSueDFjA5vnAJx0up7DCT3CfJGwGSJM3wEFWsabO-Jos0qPhQMEiezbnSOgjCBNlO2DfEiYd67hNYn_Q-6Hrf95zWFaYN3h42qevCTLolgVfe481sHB5xNkMcqVb8CzxJZb_qY4HChkg0gvjc10ch8vvbfrg","expirationTime":null,"keys":{"p256dh":"BGxyVUWExbjiWcuIM7OugCzDEhqRyEMCvxWbzlq95CtPAGcb2JUEv1NrIHxhAP6oVaaKXpa8WHWAtM7GaLh7ka0","auth":"GR4M06VeIjA8SzMMzaPW7Q"}}
   res.status(201).json(req.body);
-  const payload = JSON.stringify({ title: 'There is a flood approaching. You need water and batteries.' });
+  const payload = JSON.stringify({ title: 'This is an natural disaster alert' });
 
   console.log(subscription);
 

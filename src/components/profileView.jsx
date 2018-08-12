@@ -58,6 +58,7 @@ class ProfileView extends React.Component {
     } else {
       this.setState({preparedness: "somewhatPrepared"});
     }
+    window.client();
   }
 
   boxes() {
