@@ -5,6 +5,6 @@ self.addEventListener('push', ev => {
   console.log('Got push', data);
   self.registration.showNotification(data.title, {
     body: 'There is a flood approaching. You need water and batteries.',
-    icon: 'http://mongoosejs.com/docs/images/mongoose5_62x30_transparent.png'
+    icon: 'https://github.com/bwang22/AgentofChange/raw/master/flood.jpg'
   });
 });
