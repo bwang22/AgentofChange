@@ -15,7 +15,6 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager.
     subscribe({
-      endpoint: "https://fcm.googleapis.com/fcm/send/czVbj0PcYK4:APA91bHSueDFjA5vnAJx0up7DCT3CfJGwGSJM3wEFWsabO-Jos0qPhQMEiezbnSOgjCBNlO2DfEiYd67hNYn_Q-6Hrf95zWFaYN3h42qevCTLolgVfe481sHB5xNkMcqVb8CzxJZb_qY4HChkg0gvjc10ch8vvbfrg",
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
     });
